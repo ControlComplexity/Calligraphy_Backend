@@ -1,0 +1,5 @@
+LogFile: /data/logs/calligraphy.log # 日志文件
+DB:
+  Url: root:root@tcp(101.43.39.188:3306)/calligraphy?charset=utf8mb4&parseTime=True&loc=Local
+  MaxIdleConns: 50
+  MaxOpenConns: 200

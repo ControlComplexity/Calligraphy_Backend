@@ -1,0 +1,5 @@
+轮播图
+1. 获取所有轮播图
+http://{ip}:10013/api/carousel/carousels
+2.  获取所有理论
+http://{ip}:10000/api/theory/theory
