@@ -1,7 +1,9 @@
 package api
 
 import (
+	"github.com/ControlComplexity/Calligraphy_Backend/model"
 	services "github.com/ControlComplexity/Calligraphy_Backend/service"
+	"github.com/ControlComplexity/Calligraphy_Backend/utils"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/web"
 	"github.com/mlogclub/simple/web/params"
@@ -19,7 +21,19 @@ func (c *EssayController) GetEssays() *web.JsonResult {
 	essays, paging := services.EssayService.Find(params.NewQueryParams(c.Ctx).
 		EqByReq("contentdynasty").EqByReq("writerdynasty").EqByReq("calligrapher").
 		EqByReq("type").LikeByReq("title").PageByReq().Desc("id"))
-	return web.JsonPageData(essays, paging)
+	res := make([]model.Essay, 0)
+	for _, es := range essays{
+		res = append(res, model.Essay{
+			Model: model.Model{
+				Id: es.Id,
+			},
+			Time: utils.FormatTimeToString(es.Time),
+			Abstract: es.Abstract,
+			Title: es.Title,
+			Image: es.Image,
+		})
+	}
+	return web.JsonPageData(res, paging)
 }
 
 // GetBy 根据ID获取文章

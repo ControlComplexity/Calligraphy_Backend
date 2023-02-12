@@ -18,7 +18,7 @@ type theoryRepository struct {
 
 // Find 返回书法理论的id和标题
 func (r *theoryRepository) Find(db *gorm.DB, cnd *sqls.Cnd) (list []model.TheoryDO, paging *sqls.Paging) {
-	cnd.SelectCols = []string{"id", "title", "image"}
+	cnd.SelectCols = []string{"id", "title", "image" , "abstract", "time"}
 	cnd.Find(db, &list)
 	fmt.Print("Find list: ", list)
 	count := cnd.Count(db, &model.TheoryDO{})

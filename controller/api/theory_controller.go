@@ -1,7 +1,9 @@
 package api
 
 import (
+	"github.com/ControlComplexity/Calligraphy_Backend/model"
 	services "github.com/ControlComplexity/Calligraphy_Backend/service"
+	"github.com/ControlComplexity/Calligraphy_Backend/utils"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/web"
 	"github.com/mlogclub/simple/web/params"
@@ -18,7 +20,18 @@ type TheoryController struct {
 func (c *TheoryController) GetTheory() *web.JsonResult {
 	essays, paging := services.TheoryService.Find(params.NewQueryParams(c.Ctx).
 		EqByReq("type").LikeByReq("title").PageByReq().Desc("id"))
-	return web.JsonPageData(essays, paging)
+	res := make([]model.Theory, 0)
+	for _, es := range essays{
+		res = append(res, model.Theory{
+			Model: model.Model{
+				Id: es.Id,
+			},
+			Time: utils.FormatTimeToString(es.Time),
+			Abstract: es.Abstract,
+			Title: es.Title,
+		})
+	}
+	return web.JsonPageData(res, paging)
 }
 
 // GetBy 根据ID获取文章
