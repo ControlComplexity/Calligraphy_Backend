@@ -5,3 +5,5 @@ http://{ip}:10000/api/carousel/carousels
 http://{ip}:10000/api/theory/theory
 3.  获取文章
 http://{ip}:10000/api/essay/essays?type=shufa&title=&limit=1&page=1&contentdynasty=明朝&writerdynasty=当
+4. 活动列表
+http://127.0.0.1:10000/api/activity/activities

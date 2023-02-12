@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "bceeca41-321e-4ac2-ad71-274582d506db",
+		"name": "calligraphy 101.43.39.188",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://101.43.39.188:10000/api/carousel/carousels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/carousel/carousels",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"carousel",
+						"carousels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.188:10000/api/essay/essays?type=shufa&title=&limit=1&page=1&contentdynasty=明朝&writerdynasty=当",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/essay/essays?type=shufa&title=&limit=1&page=1&contentdynasty=明朝",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"essay",
+						"essays"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "shufa"
+						},
+						{
+							"key": "title",
+							"value": ""
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "contentdynasty",
+							"value": "明朝"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.188:10000/api/carousel/carousels Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/theory/theory",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"theory",
+						"theory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.188:10000/api/essay/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/essay/1",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"essay",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

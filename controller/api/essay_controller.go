@@ -1,21 +1,21 @@
 package api
 
 import (
-	"fmt"
 	services "github.com/ControlComplexity/Calligraphy_Backend/service"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/web"
 	"github.com/mlogclub/simple/web/params"
 )
 
+/*
+EssayController 书法教育文章，以图片为主
+*/
 type EssayController struct {
 	Ctx iris.Context
 }
 
 // GetEssays 文章列表
 func (c *EssayController) GetEssays() *web.JsonResult {
-	id := params.FormValue(c.Ctx, "content_dynasty")
-	fmt.Println("id: ", id)
 	essays, paging := services.EssayService.Find(params.NewQueryParams(c.Ctx).
 		EqByReq("contentdynasty").EqByReq("writerdynasty").EqByReq("calligrapher").
 		EqByReq("type").LikeByReq("title").PageByReq().Desc("id"))

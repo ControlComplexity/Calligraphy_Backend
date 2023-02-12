@@ -45,6 +45,8 @@ func Router() {
 		m.Party("/carousel").Handle(new(api.CarouselController))
 		m.Party("/theory").Handle(new(api.TheoryController))
 		m.Party("/essay").Handle(new(api.EssayController))
+		m.Party("/activity").Handle(new(api.ActivityController))
+		m.Party("/exhibition").Handle(new(api.ExhibitionController))
 	})
 
 	if err := app.Listen(":10000",

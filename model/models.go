@@ -9,6 +9,7 @@ type Model struct {
 }
 
 const (
+	activityTableName   = "activity"
 	essayTableName      = "essay"
 	carouselTableName   = "carousel"
 	exhibitionTableName = "exhibition"
@@ -78,4 +79,42 @@ type EssayDO struct {
 
 func (EssayDO) TableName() string {
 	return essayTableName
+}
+
+type ActivityDO struct {
+	Model
+	Name        string    `gorm:"column:name;type:varchar(50);index;not null;default:'';comment:活动名称"`
+	Label       string    `gorm:"column:label;type:varchar(50);index;not null;default:'';comment:活动标签"`
+	Price       float32   `gorm:"column:price;type:float;index;not null;default:0;comment:价格"`
+	Location    string    `gorm:"column:location;type:varchar(50);index;not null;default:'';comment:地点"`
+	Time        time.Time `gorm:"column:time;type:timestamp;autoUpdateTime;not null;default:CURRENT_TIMESTAMP;comment:更新时间"`
+	SmallImg    string    `gorm:"column:small_img;type:varchar(50);index;not null;default:'';comment:小图"`
+	BigImg      string    `gorm:"column:big_img;type:varchar(50);index;not null;default:'';comment:大图"`
+	Description string    `gorm:"column:description;type:varchar(50);index;not null;default:'';comment:描述"`
+	CreatedAt   time.Time `gorm:"column:created_at;type:timestamp;autoCreateTime;not null;default:CURRENT_TIMESTAMP;comment:创建时间"`
+	UpdatedAt   time.Time `gorm:"column:updated_at;type:timestamp;autoUpdateTime;not null;default:CURRENT_TIMESTAMP;comment:更新时间"`
+}
+
+func (ActivityDO) TableName() string {
+	return activityTableName
+}
+
+// ExhibitionDO 展览
+type ExhibitionDO struct {
+	Model
+	Uuid      string    `gorm:"column:uuid;type:varchar(128);not null;default:'';comment:文章编号"`
+	Title     string    `gorm:"column:title;type:varchar(128);not null;default:'';comment:文章标题"`
+	Content   string    `gorm:"column:content;type:varchar(128);not null;default:'';comment:文章内容"`
+	Time      time.Time `gorm:"column:time;type:time;not null;comment:文章内容"`
+	Type      string    `gorm:"column:type;type:varchar(128);not null;default:'';comment:文章类型"`
+	City      string    `gorm:"column:city;type:varchar(128);not null;default:'';comment:所在城市"`
+	Image     string    `gorm:"column:image;type:varchar(128);not null;default:'';comment:图片"`
+	Hits      int64     `gorm:"column:hits;type:int;not null;default:0;comment:访问量"`
+	Like      int64     `gorm:"column:like;type:int;not null;default:0;comment:喜欢次数"`
+	CreatedAt time.Time `gorm:"column:created_at;type:timestamp;autoCreateTime;not null;default:CURRENT_TIMESTAMP;comment:创建时间"`
+	UpdatedAt time.Time `gorm:"column:updated_at;type:timestamp;autoUpdateTime;not null;default:CURRENT_TIMESTAMP;comment:更新时间"`
+}
+
+func (ExhibitionDO) TableName() string {
+	return exhibitionTableName
 }
