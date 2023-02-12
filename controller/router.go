@@ -44,6 +44,7 @@ func Router() {
 	mvc.Configure(app.Party("/api"), func(m *mvc.Application) {
 		m.Party("/carousel").Handle(new(api.CarouselController))
 		m.Party("/theory").Handle(new(api.TheoryController))
+		m.Party("/essay").Handle(new(api.EssayController))
 	})
 
 	if err := app.Listen(":10000",

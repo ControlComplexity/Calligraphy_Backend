@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80031
 File Encoding         : 65001
 
-Date: 2023-02-11 19:12:40
+Date: 2023-02-12 09:48:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `carousel` (
   `url` longtext,
   `time` datetime(3) NOT NULL COMMENT '文章内容',
   `type` varchar(128) NOT NULL DEFAULT '' COMMENT '图片类型',
-  `city` varchar(128) NOT NULL DEFAULT '' COMMENT '所在城市',
+  `link` varchar(128) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '超链接',
   `hits` bigint NOT NULL DEFAULT '0' COMMENT '访问量',
   `like` bigint NOT NULL DEFAULT '0' COMMENT '喜欢次数',
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -37,12 +37,46 @@ CREATE TABLE `carousel` (
 -- ----------------------------
 -- Records of carousel
 -- ----------------------------
-INSERT INTO `carousel` VALUES ('1', '', 'carousel1', 'http://101.43.39.188/image/calligraphy/carousel/carousel1.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:15:47', '2023-02-10 07:15:47');
-INSERT INTO `carousel` VALUES ('2', '', 'carousel2', 'http://101.43.39.188/image/calligraphy/carousel/carousel2.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:16:46', '2023-02-10 07:16:46');
-INSERT INTO `carousel` VALUES ('3', '', 'carousel3', 'http://101.43.39.188/image/calligraphy/carousel/carousel3.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:16:49', '2023-02-10 07:16:49');
-INSERT INTO `carousel` VALUES ('4', '', 'carousel4', 'http://101.43.39.188/image/calligraphy/carousel/carousel4.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:16:53', '2023-02-10 07:16:53');
-INSERT INTO `carousel` VALUES ('5', '', 'carousel5', 'http://101.43.39.188/image/calligraphy/carousel/carousel5.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:16:56', '2023-02-10 07:16:56');
-INSERT INTO `carousel` VALUES ('6', '', 'carousel6', 'http://101.43.39.188/image/calligraphy/carousel/carousel6.jpg', '2023-02-10 07:07:49.000', '', '', '0', '0', '2023-02-10 07:17:00', '2023-02-10 07:17:00');
+INSERT INTO `carousel` VALUES ('1', '', 'carousel1', 'http://101.43.39.188/image/calligraphy/carousel/carousel1.jpg', '2023-02-10 07:07:49.000', '', 'www.baidu.com', '0', '0', '2023-02-11 19:35:35', '2023-02-11 19:35:35');
+INSERT INTO `carousel` VALUES ('2', '', 'carousel2', 'http://101.43.39.188/image/calligraphy/carousel/carousel2.jpg', '2023-02-10 07:07:49.000', '', 'https://baijiahao.baidu.com/s?id=1716100790698670975&wfr=spider&for=pc', '0', '0', '2023-02-11 19:35:46', '2023-02-11 19:35:46');
+INSERT INTO `carousel` VALUES ('3', '', 'carousel3', 'http://101.43.39.188/image/calligraphy/carousel/carousel3.jpg', '2023-02-10 07:07:49.000', '', 'https://baijiahao.baidu.com/s?id=1716100790698670975&wfr=spider&for=pc', '0', '0', '2023-02-11 19:35:47', '2023-02-11 19:35:47');
+INSERT INTO `carousel` VALUES ('4', '', 'carousel4', 'http://101.43.39.188/image/calligraphy/carousel/carousel4.jpg', '2023-02-10 07:07:49.000', '', 'https://baijiahao.baidu.com/s?id=1716100790698670975&wfr=spider&for=pc', '0', '0', '2023-02-11 19:35:48', '2023-02-11 19:35:48');
+INSERT INTO `carousel` VALUES ('5', '', 'carousel5', 'http://101.43.39.188/image/calligraphy/carousel/carousel5.jpg', '2023-02-10 07:07:49.000', '', 'https://baijiahao.baidu.com/s?id=1716100790698670975&wfr=spider&for=pc', '0', '0', '2023-02-11 19:35:48', '2023-02-11 19:35:48');
+INSERT INTO `carousel` VALUES ('6', '', 'carousel6', 'http://101.43.39.188/image/calligraphy/carousel/carousel6.jpg', '2023-02-10 07:07:49.000', '', 'https://baijiahao.baidu.com/s?id=1716100790698670975&wfr=spider&for=pc', '0', '0', '2023-02-11 19:35:49', '2023-02-11 19:35:49');
+
+-- ----------------------------
+-- Table structure for essay
+-- ----------------------------
+DROP TABLE IF EXISTS `essay`;
+CREATE TABLE `essay` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(128) NOT NULL DEFAULT '' COMMENT '文章编号',
+  `title` varchar(128) NOT NULL DEFAULT '' COMMENT '文章标题',
+  `abstract` varchar(255) DEFAULT NULL,
+  `content` varchar(10000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '文章内容',
+  `url` varchar(128) NOT NULL DEFAULT '' COMMENT 'URL',
+  `time` datetime(3) NOT NULL ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '文章内容',
+  `type` varchar(128) NOT NULL DEFAULT '' COMMENT '文章类型',
+  `image` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '图片',
+  `home_image` varchar(255) DEFAULT NULL,
+  `writerdynasty` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `contentdynasty` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `calligrapher` varchar(255) DEFAULT NULL,
+  `hits` int(8) unsigned zerofill DEFAULT NULL COMMENT '访问量',
+  `like` int(8) unsigned zerofill DEFAULT NULL COMMENT '喜欢次数',
+  `display_home_page` tinyint(1) unsigned zerofill NOT NULL DEFAULT '0' COMMENT '是否在首页展示。1为是，0为否',
+  `created_at` datetime(3) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+  `updated_at` datetime(3) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
+  `deleted_at` datetime(3) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '删除日期',
+  PRIMARY KEY (`id`,`display_home_page`),
+  KEY `idx_essay_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+
+-- ----------------------------
+-- Records of essay
+-- ----------------------------
+INSERT INTO `essay` VALUES ('1', 'sdfdsf', '董其昌字画欣赏《香光书画真迹》', '明代董其昌山水十二开，高清书画作品图片14张。 香光书画真迹，韩荣光珍藏，子孙永保。 清代狄曼农书法题跋...', '明代董其昌山水十二开，高清书画作品图片14张。\r\n\r\n董其昌字画欣赏《香光书画真迹》\r\n\r\n香光书画真迹，韩荣光珍藏，子孙永保。\r\n\r\n\r\n董其昌字画欣赏《香光书画真迹》\r\n该图片原图过大，需单击该处才可查看到原图。\r\n董其昌字画欣赏《香光书画真迹》', '', '2023-02-12 09:06:17.864', 'shufa', 'http://101.43.39.188/image/calligraphy/carousel/carousel6.jpg', 'http://101.43.39.188/image/calligraphy/carousel/carousel6.jpg', '当代', '明朝', '董其昌', null, null, '0', '2023-02-12 09:06:17.864', '2023-02-12 09:06:17.864', '2023-02-12 09:06:17.864');
+INSERT INTO `essay` VALUES ('2', 'dsgvfdsg', '彦辕谈书法：诗书创作与五律诗谱（一）', '书法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。', '法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。\r\n\r\n法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。\r\n法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。\r\n\r\n法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。\r\n\r\n法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。\r\n\r\n书法和诗词都是中华民族的优秀传统文化，都需要我们来继承。尤其是书法爱好者们。在书法学习到了一定程度之后，都有创作作品的欲望。那么，在内容上除选择古诗词外，也都很希望书写自己创作的诗词。然后写成书法作品，供自己，家人，朋友，大众来欣赏。然而，也看到有些朋友写的诗，内容上挺好的，但从格律上，不符合规则，也不符合古体诗的规则，也是一首“顺口溜”。那为什么不把它按照格律诗的规则来写呢？究其原因，是因为有许多书法爱好者，对格律诗没有接触过的缘故。为了使大家对格律诗有些了解，在这里介绍一下格律诗的诗谱和古诗诗例并附李砚园小楷书古诗图例；又附李砚园先生依谱所做的诗和小楷书法图例，供大家参考，或许能帮助上大家，在创作上有所启迪。\r\n\r\n\r\n五言律诗诗谱：\r\n五言律诗每句五个字，一共八句话，共40字。\r\n五言律诗分平起（一二声的字）仄起（三四声的字）两大类。每类又分首句不押韵和首句押韵，所以就形成了四种诗谱谱式，分述于下。\r\n\r\n\r\n（一）.仄起--（首句第二个字为仄声）首句不押韵古诗例（首句最后一个字不押韵）\r\n对仗：在五律中第三四句；五六句中，上下句要对账（平仄.词性等对仗）\r\n\r\n\r\n1.例子-----（杜甫《春望》-古韵）\r\n\r\n国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。烽火连三月，家书抵万金。白头搔更短，浑欲不胜簪。', '', '2023-02-12 09:48:14.670', 'shufa ', 'http://101.43.39.188/image/calligraphy/carousel/carousel5.jpg', 'http://101.43.39.188/image/calligraphy/carousel/carousel5.jpg', null, null, null, null, null, '1', '2023-02-12 09:48:14.670', '2023-02-12 09:48:14.670', '2023-02-12 09:48:14.670');
 
 -- ----------------------------
 -- Table structure for theory
