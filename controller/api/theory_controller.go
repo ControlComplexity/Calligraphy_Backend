@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	services "github.com/ControlComplexity/Calligraphy_Backend/service"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/web"
@@ -17,7 +16,6 @@ type TheoryController struct {
 
 // GetTheory 书法教育理论列表
 func (c *TheoryController) GetTheory() *web.JsonResult {
-	fmt.Println("zouyie")
 	essays, paging := services.TheoryService.Find(params.NewQueryParams(c.Ctx).
 		EqByReq("type").LikeByReq("title").PageByReq().Desc("id"))
 	return web.JsonPageData(essays, paging)
