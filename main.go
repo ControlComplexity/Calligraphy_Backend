@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	controllers "github.com/ControlComplexity/Calligraphy_Backend/controller"
+	"github.com/ControlComplexity/Calligraphy_Backend/cron"
 	"github.com/ControlComplexity/Calligraphy_Backend/model"
 	"github.com/ControlComplexity/Calligraphy_Backend/pkg/config"
 	"github.com/mlogclub/simple/sqls"
@@ -44,6 +45,7 @@ func init() {
 	}
 }
 func main() {
-
+	cron.RunCronJobs()
 	controllers.Router()
+
 }

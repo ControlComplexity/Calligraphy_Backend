@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"github.com/ControlComplexity/Calligraphy_Backend/model"
 	repositories "github.com/ControlComplexity/Calligraphy_Backend/repository"
 	"github.com/mlogclub/simple/sqls"
@@ -17,7 +16,6 @@ func newActivityService() *activityService {
 type activityService struct{}
 
 func (s *activityService) Find(params *params.QueryParams) ([]model.ActivityDO, *sqls.Paging) {
-	fmt.Println("111")
 	return repositories.ActivityRepository.Find(sqls.DB(), &params.Cnd)
 }
 

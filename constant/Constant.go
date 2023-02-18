@@ -1,0 +1,3 @@
+package constant
+
+const CALLIGRAPHY_THEORY_ZSET_KEY = "zset:CALLIGRAPHY_THEORY_KEY"

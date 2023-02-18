@@ -18,10 +18,10 @@ type TheoryController struct {
 
 // GetTheory 书法教育理论列表
 func (c *TheoryController) GetTheory() *web.JsonResult {
-	essays, paging := services.TheoryService.Find(params.NewQueryParams(c.Ctx).
-		EqByReq("type").LikeByReq("title").PageByReq().Desc("id"))
+	theory, paging := services.TheoryService.Find(params.NewQueryParams(c.Ctx).
+		EqByReq("type").LikeByReq("keyword").PageByReq().Desc("id"))
 	res := make([]model.Theory, 0)
-	for _, es := range essays{
+	for _, es := range theory{
 		res = append(res, model.Theory{
 			Model: model.Model{
 				Id: es.Id,
@@ -29,6 +29,7 @@ func (c *TheoryController) GetTheory() *web.JsonResult {
 			Time: utils.FormatTimeToString(es.Time),
 			Abstract: es.Abstract,
 			Title: es.Title,
+			Image: es.Image,
 		})
 	}
 	return web.JsonPageData(res, paging)
