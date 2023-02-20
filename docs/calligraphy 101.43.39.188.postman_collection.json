@@ -76,12 +76,12 @@
 			"response": []
 		},
 		{
-			"name": "http://101.43.39.188:10000/api/carousel/carousels Copy",
+			"name": "http://101.43.39.188:10000/api/theory/theory",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://101.43.39.188:10000/api/theory/theory",
+					"raw": "http://101.43.39.188:10000/api/theory/theory?limit=10&page=1",
 					"protocol": "http",
 					"host": [
 						"101",
@@ -94,6 +94,16 @@
 						"api",
 						"theory",
 						"theory"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -118,6 +128,78 @@
 						"api",
 						"essay",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.188:10000/api/swiper/swiper",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/swiper/swipers",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"swiper",
+						"swipers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.188:10000/api/theory/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/theory/3",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"theory",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://101.43.39.10000/api/search/top",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://101.43.39.188:10000/api/search/top",
+					"protocol": "http",
+					"host": [
+						"101",
+						"43",
+						"39",
+						"188"
+					],
+					"port": "10000",
+					"path": [
+						"api",
+						"search",
+						"top"
 					]
 				}
 			},

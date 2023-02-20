@@ -49,6 +49,7 @@ func Router() {
 		m.Party("/exhibition").Handle(new(api.ExhibitionController))
 		m.Party("/tech").Handle(new(api.TechController))
 		m.Party("/search").Handle(new(api.SearchController))
+		m.Party("/news").Handle(new(api.NewsController))
 	})
 
 	if err := app.Listen(":10000",

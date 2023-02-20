@@ -18,6 +18,15 @@ type Essay struct {
 	Image           string    `gorm:"column:image;type:varchar(128);not null;default:'';comment:图片"`
 }
 
+// News 新闻
+type News struct {
+	Model
+	Title           string    `gorm:"column:title;type:varchar(128);not null;default:'';comment:新闻标题"`
+	Abstract        string    `gorm:"column:abstract;type:varchar(300);not null;default:'';comment:新闻摘要"`
+	Time            string    `gorm:"column:time;type:time;not null;comment:理论时间"`
+	Image           string    `gorm:"column:image;type:varchar(128);not null;default:'';comment:图片"`
+}
+
 // Tech 科技与书法
 type Tech struct {
 	Model

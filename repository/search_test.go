@@ -7,5 +7,5 @@ import (
 )
 
 func TestGetRankList(t *testing.T) {
-	fmt.Println(GetRankList(context.Background(), "sdfdsf"))
+	fmt.Println(GetRankList(context.Background()))
 }
